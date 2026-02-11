@@ -144,4 +144,4 @@ print(f'Prediction: {prediction}')
 
 ## RESULT
 
-Include your result here
+Thus, a neural network regression model was successfully developed and trained using PyTorch.
