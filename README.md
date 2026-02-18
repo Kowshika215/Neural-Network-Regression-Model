@@ -102,7 +102,7 @@ optimizer = optim.RMSprop(kowshi.parameters(), lr=0.001)
 def train_model(kowshi, X_train, y_train, criterion, optimizer, epochs=2000):
     for epoch in range(epochs):
         optimizer.zero_grad()
-        loss = criterion(jisha(X_train), y_train)
+        loss = criterion(kowshi(X_train), y_train)
         loss.backward()
         optimizer.step()
 
