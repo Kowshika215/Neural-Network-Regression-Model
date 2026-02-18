@@ -10,7 +10,7 @@ This code builds and trains a feedforward neural network in PyTorch for a regres
 
 ## Neural Network Model
 
-<img width="1024" height="677" alt="image" src="https://github.com/user-attachments/assets/b01d7f51-2eaa-48b8-80ec-56529fe27cd2" />
+<img width="999" height="648" alt="Screenshot 2026-02-18 135035" src="https://github.com/user-attachments/assets/b1d5d2e9-dd7e-4006-a7bb-9602ca67fb32" />
 
 
 ## DESIGN STEPS
@@ -50,6 +50,7 @@ Use the trained model to predict for a new input value .
 ### Name: Kowshika R
 ### Register Number: 212224220049
 ```
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -73,6 +74,9 @@ X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train, dtype=torch.float32).view(-1, 1)
 X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_test_tensor = torch.tensor(y_test, dtype=torch.float32).view(-1, 1)
+
+# Name: KOWSHIKA R
+# Register Number: 212224220049
 class NeuralNet(nn.Module):
   def __init__(self):
         super().__init__()
@@ -87,30 +91,40 @@ class NeuralNet(nn.Module):
         x = self.relu(self.fc2(x))
         x = self.fc3(x)
         return x
-ai_brain = NeuralNet()
+
+# Initialize the Model, Loss Function, and Optimizer
+kowshi = NeuralNet()
 criterion = nn.MSELoss()
-optimizer = optim.RMSprop(ai_brain.parameters(), lr=0.001)
-def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
+optimizer = optim.RMSprop(kowshi.parameters(), lr=0.001)
+
+# Name: KOWSHIKA R
+# Register Number: 212224230106
+def train_model(kowshi, X_train, y_train, criterion, optimizer, epochs=2000):
     for epoch in range(epochs):
         optimizer.zero_grad()
-        loss = criterion(ai_brain(X_train), y_train)
+        loss = criterion(jisha(X_train), y_train)
         loss.backward()
         optimizer.step()
-        ai_brain.history['loss'].append(loss.item())
+
+
+        # Append loss inside the loop
+        kowshi.history['loss'].append(loss.item())
 
         if epoch % 200 == 0:
             print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 
-train_model(ai_brain, X_train_tensor, y_train_tensor, criterion, optimizer)
+train_model(kowshi, X_train_tensor, y_train_tensor, criterion, optimizer)
 
 with torch.no_grad():
-    test_loss = criterion(ai_brain(X_test_tensor), y_test_tensor)
+    test_loss = criterion(kowshi(X_test_tensor), y_test_tensor)
     print(f'Test Loss: {test_loss.item():.6f}')
 
-loss_df = pd.DataFrame(ai_brain.history)
+loss_df = pd.DataFrame(kowshi.history)
 
 import matplotlib.pyplot as plt
+print("\nName:KOWSHIKA R")
+print("Register Number:212224220049")
 loss_df.plot()
 plt.xlabel("Epochs")
 plt.ylabel("Loss")
@@ -118,27 +132,31 @@ plt.title("Loss during Training")
 plt.show()
 
 X_n1_1 = torch.tensor([[9]], dtype=torch.float32)
-prediction = ai_brain(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+prediction = kowshi(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+print("Name:KOWSHIKA R")
+print("Register Number:212224220049")
 print(f'Prediction: {prediction}')
+
+
 ```
 ## Dataset Information
 
-<img width="188" height="229" alt="image" src="https://github.com/user-attachments/assets/4135ccfa-a10f-4c01-9bfb-84e777d8832e" />
-
+<img width="482" height="384" alt="Screenshot 2026-02-18 134102" src="https://github.com/user-attachments/assets/aa43d8c0-3dd9-4165-94e1-bc3f77b94bf0" />
 
 ## OUTPUT
 
-<img width="356" height="237" alt="image" src="https://github.com/user-attachments/assets/71e592c0-f884-4042-99c2-949d62a9ca97" />
+ <img width="446" height="302" alt="Screenshot 2026-02-18 134629" src="https://github.com/user-attachments/assets/d4a4d464-bb87-478c-bc20-b10675fd9092" />
+
 
 
 ### Training Loss Vs Iteration Plot
 
-<img width="714" height="575" alt="image" src="https://github.com/user-attachments/assets/642cb950-29ad-4d36-8778-c2b65b5a418b" />
+<img width="739" height="620" alt="Screenshot 2026-02-18 134656" src="https://github.com/user-attachments/assets/96058a1d-4b5b-4c14-903c-9bfa4b82d0ee" />
 
 
 ### New Sample Data Prediction
 
-<img width="305" height="37" alt="image" src="https://github.com/user-attachments/assets/c774442c-17da-4503-b89f-ea923272d89f" />
+<img width="379" height="72" alt="Screenshot 2026-02-18 134826" src="https://github.com/user-attachments/assets/0bd66ca1-4c6e-44a3-8e07-a2dd5532228a" />
 
 
 
